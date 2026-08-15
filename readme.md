@@ -1,30 +1,78 @@
-# 🚀 LeetCode Top Interview 150 - Python Excellence
+# CITS3001 Algorithms
 
-This repository contains my optimized solutions for the **LeetCode Top Interview 150**. As a Computer Science student, my objective is to provide implementations that are not only clean and "Pythonic" but also achieve **100% Runtime Beats** on the LeetCode platform.
+This repository contains Python algorithm exercises for CITS3001, including weekly coursework, lab problems, and a collection of LeetCode Hot 150 solutions.
 
-## 🎯 Engineering Principles
+The code is intended to practise algorithmic thinking, complexity analysis, and competitive-programming input/output patterns. Some files represent work in progress, so the implementations are not necessarily the only or final optimal solutions.
 
-* **Algorithm Efficiency**: Every solution is implemented with the theoretical optimal Time Complexity ($O(N)$, $O(\log N)$, etc.).
-* **100% Beats Strategy**: Leveraging Python's internal optimizations, such as using `list.pop()`, `collections.deque`, and minimizing attribute lookups.
-* **Readability**: Maintaining PEP 8 standards while pushing for performance.
+## Repository Structure
 
-## 📊 Roadmap & Progress
+```text
+.
++-- lab01/                  # Lab 01: standard input/output problems
+|   +-- classRank.py        # Median of Medians and k-th smallest element
+|   +-- deadlineOrder.py    # Date sorting
+|   +-- leaderBoard.py      # Dynamic k-th fastest time tracking
+|   +-- rainBucket.py       # Bucket counting
+|   +-- waterStation.py     # Weighted median and minimum distance
++-- week1/
+|   +-- Week1_1.py          # Basic exercises
+|   +-- sort.py             # Merge, bucket, counting, and radix sort
++-- week2/
+|   +-- Week2_2.py          # Quicksort and distribution-sort exercises
++-- week3/
+|   +-- order_statistics.py # Randomized Quickselect
+|   +-- Week3_2.py          # Sorting and selection exercises
++-- week4/
+|   +-- week_2.py           # BFS, DFS, timing, and Kosaraju's algorithm
++-- leetcode_hot150.py      # Ongoing LeetCode Hot 150 solutions
+```
 
-| Category | Status | Focus |
-| :--- | :--- | :--- |
-| **Array / String** | 🟢 In Progress | In-place manipulation & Sliding Windows |
-| **Two Pointers** | 🟢 In Progress | Optimal boundary convergence |
-| **Hash-stack** | ⚪ Pending | $O(1)$ Lookups & Monotonic Stacks |
-| **Tree / Graph** | ⚪ Pending | DFS/BFS & Recursive Optimization |
-| **Dynamic Programming** | ⚪ Pending | State Compression & Memoization |
+## Topics Covered
 
----
+- Comparison and linear sorting: merge sort, quicksort, bucket sort, counting sort, and radix sort
+- Order statistics: Quickselect, randomized partitioning, and Median of Medians
+- Graph algorithms: breadth-first search (BFS), depth-first search (DFS), and Kosaraju's algorithm for strongly connected components
+- Common LeetCode techniques: two pointers, sliding windows, hash tables, greedy algorithms, dynamic programming, matrix traversal, and interval processing
+- Competitive-programming techniques: heaps, weighted medians, standard input/output, and efficient data processing
 
-## ⚡ Performance Optimization Checklist
+## Requirements
 
-To ensure a **100% Runtime Beat** in Python, I apply the following techniques:
-1.  **Fast I/O**: Disabling synchronization with standard streams where applicable.
-2.  **Local Variables**: Accessing local variables is faster than global or attribute lookups in Python's VM.
-3.  **Built-in Mastery**: Using C-implemented functions like `map()`, `filter()`, and `zip()` for heavy lifting.
+- Python 3.9 or later
+- The project currently uses only the Python standard library and has no third-party dependencies.
 
----
+You can use the repository's virtual environment or create a new one:
+
+```bash
+python -m venv .venv
+```
+
+On Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+## Running the Code
+
+Most files can be run directly. The lab programs with an `if __name__ == '__main__'` entry point read from standard input. For example:
+
+```bash
+python lab01/classRank.py < input.txt
+python lab01/leaderBoard.py < input.txt
+python lab01/rainBucket.py < input.txt
+python lab01/waterStation.py < input.txt
+```
+
+Sorting, searching, and LeetCode functions can also be imported and tested directly:
+
+```python
+from week3.order_statistics import find_kth_smallest
+
+print(find_kth_smallest([14, 3, 9, 1, 22, 8, 5], 3))
+```
+
+## Notes
+
+- The `Solutions` class in `leetcode_hot150.py` groups solutions by problem number. Method names generally follow the `leetcode<problem_number>` pattern.
+- Programs in `lab01` follow the standard online-judge pattern: they read input from `stdin` and write results to `stdout`.
+- Some coursework files retain learning-stage implementations and comments. Tests, complexity notes, and further refinements may be added over time.
