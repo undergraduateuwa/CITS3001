@@ -28,12 +28,22 @@ htmlcov/
 
 # IDE and editor settings
 .idea/
+.fleet/
+*.ipr
+*.iws
 .vscode/
 *.iml
+out/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+
+# IDE workspace and local metadata
+workspace.xml
+tasks.xml
+usage.statistics.xml
+*.DotSettings.user
 
 # Local configuration and secrets
 .env
