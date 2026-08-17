@@ -1,6 +1,7 @@
 import sys
 
 
+# Count raindrops in each bucket using integer indexing.
 def count_raindrops_per_bucket():
     """
     Computes the raindrop count for each bucket using the bucket index formula:

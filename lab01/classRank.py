@@ -4,6 +4,7 @@ import sys
 sys.setrecursionlimit(200000)
 
 
+# Select a robust pivot with the median-of-medians method.
 def median_of_medians(arr):
     if len(arr) <= 5:
         arr.sort()
@@ -13,6 +14,7 @@ def median_of_medians(arr):
     return select_kth(medians, (len(medians) + 1) // 2)
 
 
+# Return the one-based k-th smallest value.
 def select_kth(arr, k):
     while True:
         if len(arr) <= 5:
@@ -42,23 +44,24 @@ def select_kth(arr, k):
             k -= (L + M)
 
 
+# Read input and print the requested result.
 def main():
-    # 读取全部输入数据
+    # 璇诲彇鍏ㄩ儴杈撳叆鏁版嵁
     input_data = sys.stdin.read().split()
     if not input_data:
         return
 
     n = int(input_data[0])
     k = int(input_data[1])
-    # 截取 n 个数据
+    # 鎴彇 n 涓暟鎹?
     marks = [int(x) for x in input_data[2:2 + n]]
 
     result = select_kth(marks, k)
 
-    # 确保直接打出并 flush 缓冲区
+    # 纭繚鐩存帴鎵撳嚭骞?flush 缂撳啿鍖?
     print(result, flush=True)
 
 
-# 必须确保此入口存在！
+# 蹇呴』纭繚姝ゅ叆鍙ｅ瓨鍦紒
 if __name__ == '__main__':
     main()

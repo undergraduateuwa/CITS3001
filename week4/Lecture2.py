@@ -1,6 +1,7 @@
 from collections import deque
 import random
 
+# Visit reachable vertices in breadth-first order.
 def bfs(adj_list,start):
     seen = [0]*len(adj_list)
     order = []
@@ -18,6 +19,7 @@ def bfs(adj_list,start):
 
     return order
 
+# Visit reachable vertices with depth-first search.
 def dfs(adj_list,start_node):
     visited = [0] * len(adj_list)
     order = []
@@ -38,10 +40,12 @@ def dfs(adj_list,start_node):
     return order
 
 
+# Visit reachable vertices recursively in depth-first order.
 def dfs_recursive(adj_list,start):
     order = []
     visted = [0]*len(adj_list)
 
+    # Visit vertices recursively in depth-first order.
     def dfs_(adj_list,start):
 
         visted[start] = 1
@@ -58,10 +62,12 @@ def dfs_recursive(adj_list,start):
     return order
 
 
+# Return strongly connected components using Kosaraju's method.
 def scc(g: list[list[bool]]) -> list[list[int]]:
     seen = [False for _ in g]
     finish_order = []  # list of int vertices
 
+    # Visit reachable vertices with depth-first search.
     def dfs(u: int):
         seen[u] = True
         for v in range(len(g)):
@@ -75,6 +81,7 @@ def scc(g: list[list[bool]]) -> list[list[int]]:
 
     seen = [False for _ in g]
 
+    # Collect one strongly connected component.
     def dfs2(u: int, sc: list[int]):
         seen[u] = True
         sc.append(u)
@@ -91,12 +98,14 @@ def scc(g: list[list[bool]]) -> list[list[int]]:
 
     return sccs
 
+# Return DFS finishing times and visit order.
 def dfs_time(adj_list, start):
   visited = [0] * len(adj_list)
   time = []
   timer = 0
   order = []
 
+  # Visit reachable vertices with depth-first search.
   def dfs(u):
     nonlocal timer
     visited[u] = 1
@@ -114,47 +123,51 @@ def dfs_time(adj_list, start):
   return time,order
 
 
+# Return the transpose of a Boolean adjacency matrix.
 def transpose_comprehension(matrix: list[list[bool]]) -> list[list[bool]]:
-  """邻接矩阵转置"""
+  """閭绘帴鐭╅樀杞疆"""
   if not matrix or not matrix[0]:
     return []
   rows, cols = len(matrix), len(matrix[0])
   return [[matrix[r][c] for r in range(rows)] for c in range(cols)]
 
+# Find strongly connected components with two DFS passes.
 def kosaraju(g: list[list[bool]]) -> list[list[int]]:
     n = len(g)
 
-    # ================= 1. 第一遍 DFS：记录完成时间 =================
+    # ================= 1. 绗竴閬?DFS锛氳褰曞畬鎴愭椂闂?=================
     seen = [False] * n
     finish_order = []
 
+    # Run the first DFS pass and record finishing order.
     def dfs1(u: int):
         seen[u] = True
         for v in range(n):
-            if g[u][v] and not seen[v]:  # 矩阵方式遍历邻居
+            if g[u][v] and not seen[v]:  # 鐭╅樀鏂瑰紡閬嶅巻閭诲眳
                 dfs1(v)
         finish_order.append(u)
 
-    # 循环确保访问到所有孤立/未到达的节点
+    # 寰幆纭繚璁块棶鍒版墍鏈夊绔?鏈埌杈剧殑鑺傜偣
     for u in range(n):
         if not seen[u]:
             dfs1(u)
 
-    # ================= 2. 获取反向图 =================
+    # ================= 2. 鑾峰彇鍙嶅悜鍥?=================
     g_t = transpose_comprehension(g)
 
-    # ================= 3. 第二遍 DFS：在反向图上收集 SCC =================
-    seen = [False] * n  # 重置访问标记
+    # ================= 3. 绗簩閬?DFS锛氬湪鍙嶅悜鍥句笂鏀堕泦 SCC =================
+    seen = [False] * n  # 閲嶇疆璁块棶鏍囪
     sccs = []
 
+    # Collect one strongly connected component.
     def dfs2(u: int, sc: list[int]):
         seen[u] = True
         sc.append(u)
         for v in range(n):
-            if g_t[u][v] and not seen[v]:  # 沿着反向图的边遍历
+            if g_t[u][v] and not seen[v]:  # 娌跨潃鍙嶅悜鍥剧殑杈归亶鍘?
                 dfs2(v, sc)
 
-    # 按照完成时间从大到小（逆序）遍历
+    # 鎸夌収瀹屾垚鏃堕棿浠庡ぇ鍒板皬锛堥€嗗簭锛夐亶鍘?
     for i in range(n - 1, -1, -1):
         u = finish_order[i]
         if not seen[u]:
@@ -168,6 +181,7 @@ def kosaraju(g: list[list[bool]]) -> list[list[int]]:
 
 
 
+# Generate a directed graph as a Boolean adjacency matrix.
 def random_graph(n: int, density: float) -> list[list[bool]]:
     g = []
     for i in range(n):
@@ -184,14 +198,14 @@ def random_graph(n: int, density: float) -> list[list[bool]]:
 
 if __name__ == "__main__":
     adjList = [
-        [1, 5, 2],  # 节点 0 的邻居
-        [5, 0],     # 节点 1 的邻居
-        [5, 0, 4],  # 节点 2 的邻居
-        [1, 4],     # 节点 3 的邻居
-        [0, 2],     # 节点 4 的邻居
-        [1, 0, 2]   # 节点 5 的邻居
+        [1, 5, 2],  # 鑺傜偣 0 鐨勯偦灞?
+        [5, 0],     # 鑺傜偣 1 鐨勯偦灞?
+        [5, 0, 4],  # 鑺傜偣 2 鐨勯偦灞?
+        [1, 4],     # 鑺傜偣 3 鐨勯偦灞?
+        [0, 2],     # 鑺傜偣 4 鐨勯偦灞?
+        [1, 0, 2]   # 鑺傜偣 5 鐨勯偦灞?
     ]
-    
+
     start = 1
     _,order = dfs_time(adjList,start)
     print(order)

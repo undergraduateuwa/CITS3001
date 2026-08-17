@@ -1,6 +1,7 @@
 import sys
 
 
+# Read input and print the requested result.
 def main():
     lines = sys.stdin.read().splitlines()
 
@@ -10,13 +11,13 @@ def main():
     n = int(lines[0])
     dates = lines[1:n + 1]
 
-    # 先按 day 排序
+    # 鍏堟寜 day 鎺掑簭
     dates.sort(key=lambda date: int(date[0:2]))
 
-    # 再按 month 排序
+    # 鍐嶆寜 month 鎺掑簭
     dates.sort(key=lambda date: int(date[3:5]))
 
-    # 最后按 year 排序
+    # 鏈€鍚庢寜 year 鎺掑簭
     dates.sort(key=lambda date: int(date[6:10]))
 
     sys.stdout.write('\n'.join(dates))

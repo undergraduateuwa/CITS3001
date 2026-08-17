@@ -23,7 +23,9 @@ The code is intended to practise algorithmic thinking, complexity analysis, and 
 |   +-- order_statistics.py # Randomized Quickselect
 |   +-- Week3_2.py          # Sorting and selection exercises
 +-- week4/
-|   +-- week_2.py           # BFS, DFS, timing, and Kosaraju's algorithm
+|   +-- Lecture2.py         # BFS, DFS, timing, and Kosaraju's algorithm
++-- week5/
+|   +-- lecture1.py         # Bottom-up and top-down coin-change exercises
 +-- leetcode_hot150.py      # Ongoing LeetCode Hot 150 solutions
 ```
 

@@ -2,6 +2,7 @@
 
 arr = [2,5,7,1,4,10,3,2,5]
 
+# Sort the selected slice in place with quicksort.
 def quicksort(arr,low,high):
     if high > low:
         p = partition(arr, low, high)
@@ -10,6 +11,7 @@ def quicksort(arr,low,high):
 
 
 
+# Partition a slice and return the pivot position.
 def partition(arr,low,high):
     i = low -1
     pivot = arr[high]
@@ -22,6 +24,7 @@ def partition(arr,low,high):
 
     return i+1
 
+# Sort a slice in place with Hoare-style partitioning.
 def quicksort2(arr, low, high):
     if low < high:
         i, j = partition2(arr, low, high)
@@ -30,6 +33,7 @@ def quicksort2(arr, low, high):
         quicksort2(arr, i, high)
 
 
+# Partition a slice around its middle value.
 def partition2(arr, low, high):
     i = low
     j = high
@@ -50,6 +54,7 @@ def partition2(arr, low, high):
 
     return i, j
 
+# Sort numeric values by distributing them into buckets.
 def bucket_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -59,14 +64,14 @@ def bucket_sort(arr):
 
     bucket_count = len(arr)
 
-    # 创建桶
+    # 鍒涘缓妗?
     buckets = [[] for _ in range(bucket_count)]
 
-    # 防止所有元素都相同
+    # 闃叉鎵€鏈夊厓绱犻兘鐩稿悓
     if max_value == min_value:
         return arr
 
-    # 把元素放进对应的桶
+    # 鎶婂厓绱犳斁杩涘搴旂殑妗?
     for value in arr:
         index = int(
             (value - min_value)
@@ -75,7 +80,7 @@ def bucket_sort(arr):
         )
         buckets[index].append(value)
 
-    # 每个桶内部排序
+    # 姣忎釜妗跺唴閮ㄦ帓搴?
     result = []
 
     for bucket in buckets:
@@ -84,6 +89,7 @@ def bucket_sort(arr):
 
     return result
 
+# Group items by integer keys and return them in key order.
 def distribution_sort(xs, key_function):
     if not xs:
         return []

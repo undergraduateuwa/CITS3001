@@ -1,3 +1,4 @@
+# Find the minimum coin count with bottom-up dynamic programming.
 def coin_change_b2u(amount,coins):
     dp = [amount+1] * (amount+1)
     dp[0] = 0
@@ -11,8 +12,10 @@ def coin_change_b2u(amount,coins):
 
 import functools
 
+# Find the minimum coin count with cached recursion.
 def coin_change_u2b(amount,coins):
     @functools.cache
+    # Solve the remaining coin-change subproblem recursively.
     def recurrence(amount):
 
         res = None
