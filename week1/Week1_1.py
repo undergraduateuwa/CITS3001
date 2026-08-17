@@ -1,5 +1,4 @@
 # Created on iPad.
-# Return the maximum subarray sum using Kadane's algorithm.
 def notnaive(arr):
     cursum = 0
     res = 0

@@ -2,7 +2,6 @@ import sys
 import heapq
 
 
-# Print the k-th fastest time after each finisher.
 def process_fun_run_times():
     """
     Reads inputs from standard input and prints the k-th fastest

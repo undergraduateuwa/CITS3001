@@ -1,24 +1,22 @@
 # Created on iPad.
 arr = [711,170,343,7,452,617,144,417]
-# Placeholder for a bucket-sort exercise.
 def buck_sort(arr):
     res = 0
     return result
 
 
 
-# Sort non-negative integers with radix sort.
 def radix_sort(arr):
     if not arr:
         return arr
 
-    # 鎵惧埌鏁扮粍涓殑鏈€澶у€硷紝纭畾鏈€澶氶渶瑕佹帓澶氬皯浣?
+    # Find the largest value to determine how many digit passes are needed.
     max_num = max(arr)
 
-    # exp 琛ㄧず褰撳墠澶勭悊鐨勬暟浣?
-    # exp = 1锛氫釜浣?
-    # exp = 10锛氬崄浣?
-    # exp = 100锛氱櫨浣?
+    # exp identifies the digit position processed in the current pass.
+    # exp = 1: ones place
+    # exp = 10: tens place
+    # exp = 100: hundreds place
     exp = 1
 
     while max_num // exp > 0:
@@ -28,26 +26,25 @@ def radix_sort(arr):
     return arr
 
 
-# Process one digit position for a counting-sort pass.
 def counting_sort_by_digit(arr, exp):
     n = len(arr)
 
-    # 涓存椂缁撴灉鏁扮粍
+    # Store the result of this counting-sort pass.
     output = [0] * n
 
-    # 0~9 鍏?10 涓《
+    # Count occurrences for the ten possible digits, 0 through 9.
     count = [0] * 10
 
-    # 缁熻褰撳墠鏁颁綅涓婃瘡涓暟瀛楀嚭鐜扮殑娆℃暟
+    # Count each digit at the current position.
     for num in arr:
         digit = (num // exp) % 10
         count[digit] += 1
 
-    # 杞崲涓虹疮璁′綅缃?
+    # Convert frequencies into cumulative positions.
     for i in range(1, 10):
         count[i] += count[i - 1]
 
-    # 蹇呴』浠庡彸鍚戝乏鏀惧叆 output锛屼繚璇佹帓搴忕ǔ瀹?
+    # Traverse right to left so the sorting pass remains stable.
     for i in range(n - 1, -1, -1):
         num = arr[i]
         digit = (num // exp) % 10
@@ -55,14 +52,13 @@ def counting_sort_by_digit(arr, exp):
         output[count[digit] - 1] = num
         count[digit] -= 1
 
-    # 鎶婄粨鏋滃鍒跺洖鍘熸暟缁?
+    # Copy the sorted result back into the original list.
     for i in range(n):
         arr[i] = output[i]
 
 
 
 
-# Return the one-based selected order statistic.
 def quick_select(arr,key,upper,lower):
     pivot = partition(arr,upper,lower)
     if pivot == key - 1:
@@ -75,17 +71,16 @@ def quick_select(arr,key,upper,lower):
         return quick_select(arr,key,upper,pivot+1)
 
 
-# Partition a slice and return the pivot position.
 def partition(arr, upper, lower):
     current = arr[lower:upper + 1]
 
-    # 鎵惧埌涓€涓繚璇?good split 鐨?pivot 鍊?
+    # Choose a pivot that guarantees a sufficiently balanced split.
     pivot_value = median_of_medians(current)
 
-    # 鎵惧埌杩欎釜 pivot 鍦ㄥ師鏁扮粍褰撳墠鍖洪棿涓殑浣嶇疆
+    # Locate the chosen pivot within the current slice.
     pivot_index = arr.index(pivot_value, lower, upper + 1)
 
-    # 鎶?pivot 绉诲姩鍒版渶鍚?
+    # Move the pivot to the end before partitioning.
     arr[pivot_index], arr[upper] = arr[upper], arr[pivot_index]
 
     i = lower - 1
@@ -99,16 +94,15 @@ def partition(arr, upper, lower):
 
     return i + 1
 
-# Select a robust pivot with the median-of-medians method.
 def median_of_medians(arr):
-    # Base case锛? 涓垨鏇村皯锛岀洿鎺ユ帓搴忓苟鎵句腑浣嶆暟
+    # Base case: sort groups of at most five and return their median.
     if len(arr) <= 5:
         sorted_arr = sorted(arr)
         return sorted_arr[len(sorted_arr) // 2]
 
     medians = []
 
-    # 姣?5 涓厓绱犲垎鎴愪竴缁?
+    # Divide the values into groups of five.
     for i in range(0, len(arr), 5):
         group = arr[i:i + 5]
         group.sort()

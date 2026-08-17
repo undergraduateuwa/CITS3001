@@ -1,4 +1,3 @@
-# Return a sorted copy using merge sort.
 def merge_sort(arr):
     if len(arr)>1:
         mid = len(arr)//2
@@ -10,7 +9,6 @@ def merge_sort(arr):
     else:
         return arr
 
-# Merge two sorted lists into one sorted list.
 def merge(right,left):
     res = []
     i = 0
@@ -29,37 +27,35 @@ def merge(right,left):
 
 
 
-# Sort numeric values by distributing them into buckets.
 def bucket_sort(arr):
     if not arr:
         return arr
 
-    # 鎵惧嚭鏈€澶у€煎拰鏈€灏忓€?
+    # Find the maximum and minimum values.
     max_val = max(arr)
     min_val = min(arr)
 
-    # 纭畾妗剁殑鏁伴噺
+    # Use one bucket per input element.
     bucket_count = len(arr)
     buckets = [[] for _ in range(bucket_count)]
 
-    # 灏嗗厓绱犲垎閰嶅埌妗朵腑
+    # Distribute each value into its corresponding bucket.
     for num in arr:
-        # 璁＄畻妗剁殑绱㈠紩
+        # Map the value proportionally to a bucket index.
         index = int((num - min_val) * (bucket_count - 1) / (max_val - min_val))
         buckets[index].append(num)
 
-    # 瀵规瘡涓《杩涜鎺掑簭锛堣繖閲屼娇鐢ㄥ唴缃帓搴忥級
+    # Sort each bucket with Python's built-in sort.
     for bucket in buckets:
         bucket.sort()
 
-    # 鏀堕泦鎵€鏈夊厓绱?
+    # Concatenate the sorted buckets.
     sorted_arr = []
     for bucket in buckets:
         sorted_arr.extend(bucket)
 
     return sorted_arr
 
-# Process one digit position for a counting-sort pass.
 def counting_sort_by_digit(arr, exp):
     n = len(arr)
     digits_records = [0 for _ in range(n)]
@@ -75,7 +71,6 @@ def counting_sort_by_digit(arr, exp):
 
 
 
-# Sort non-negative integers with radix sort.
 def radix_sort(arr):
     if not arr:
         return arr
@@ -90,7 +85,6 @@ def radix_sort(arr):
 
 
 
-# Sort values by counting their frequencies.
 def counting_sort(arr):
     if not arr:
         return []
@@ -103,7 +97,7 @@ def counting_sort(arr):
     count = [0] * range_size
     output = []
 
-    # 1. 缁熻姣忎釜鏁板瓧鍑虹幇娆℃暟
+    # Count the frequency of each value.
     for num in arr:
         count[num - min_val] += 1
 
@@ -117,7 +111,7 @@ def counting_sort(arr):
 
 
 if __name__ == "__main__":
-    # 娴嬭瘯鏍蜂緥
+    # Example run.
 
 
     print(counting_sort([4, 2, 2, 8, 3, 3, 1]))

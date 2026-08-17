@@ -1,7 +1,6 @@
 import sys
 
 
-# Read input and print the requested result.
 def main():
     lines = sys.stdin.read().splitlines()
 
@@ -11,13 +10,13 @@ def main():
     n = int(lines[0])
     dates = lines[1:n + 1]
 
-    # 鍏堟寜 day 鎺掑簭
+    # Sort by day first using stable sorting.
     dates.sort(key=lambda date: int(date[0:2]))
 
-    # 鍐嶆寜 month 鎺掑簭
+    # Then sort by month.
     dates.sort(key=lambda date: int(date[3:5]))
 
-    # 鏈€鍚庢寜 year 鎺掑簭
+    # Finally sort by year, the most significant date component.
     dates.sort(key=lambda date: int(date[6:10]))
 
     sys.stdout.write('\n'.join(dates))

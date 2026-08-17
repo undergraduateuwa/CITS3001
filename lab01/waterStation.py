@@ -1,7 +1,6 @@
 import sys
 
 
-# Find the weighted-median station and total walking distance.
 def solve():
     # Read all input from standard input
     raw_data = sys.stdin.read().split()
