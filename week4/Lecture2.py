@@ -2,6 +2,7 @@ from collections import deque
 import random
 
 def bfs(adj_list,start):
+    # O(V + E)
     seen = [0]*len(adj_list)
     order = []
 
@@ -19,6 +20,7 @@ def bfs(adj_list,start):
     return order
 
 def dfs(adj_list,start_node):
+    # O(V + E)
     visited = [0] * len(adj_list)
     order = []
     stack = []
@@ -39,6 +41,7 @@ def dfs(adj_list,start_node):
 
 
 def dfs_recursive(adj_list,start):
+    # O(V + E)
     order = []
     visted = [0]*len(adj_list)
 
@@ -59,6 +62,7 @@ def dfs_recursive(adj_list,start):
 
 
 def scc(g: list[list[bool]]) -> list[list[int]]:
+    # O(V^2)
     seen = [False for _ in g]
     finish_order = []  # list of int vertices
 
@@ -92,6 +96,7 @@ def scc(g: list[list[bool]]) -> list[list[int]]:
     return sccs
 
 def dfs_time(adj_list, start):
+  # O(V + E)
   visited = [0] * len(adj_list)
   time = []
   timer = 0
@@ -116,12 +121,14 @@ def dfs_time(adj_list, start):
 
 def transpose_comprehension(matrix: list[list[bool]]) -> list[list[bool]]:
   """Return the transpose of an adjacency matrix."""
+  # O(rows * cols)
   if not matrix or not matrix[0]:
     return []
   rows, cols = len(matrix), len(matrix[0])
   return [[matrix[r][c] for r in range(rows)] for c in range(cols)]
 
 def kosaraju(g: list[list[bool]]) -> list[list[int]]:
+    # O(V^2)
     n = len(g)
 
     # First DFS pass: record vertices by finishing time.
@@ -169,6 +176,7 @@ def kosaraju(g: list[list[bool]]) -> list[list[int]]:
 
 
 def random_graph(n: int, density: float) -> list[list[bool]]:
+    # O(n^2)
     g = []
     for i in range(n):
         adj = []

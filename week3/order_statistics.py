@@ -7,6 +7,7 @@ def partition(arr: list, low: int, high: int) -> int:
     Values smaller than the pivot move left; values greater than or equal to
     the pivot remain on the right.
     """
+    # O(n)
     pivot = arr[high]
     i = low - 1  # Track the end of the region containing smaller values.
 
@@ -26,6 +27,7 @@ def randomized_partition(arr: list, low: int, high: int) -> int:
     Randomization reduces the chance of repeatedly encountering O(n^2)
     partitions.
     """
+    # O(n)
     rand_idx = random.randint(low, high)
     arr[rand_idx], arr[high] = arr[high], arr[rand_idx]
     return partition(arr, low, high)
@@ -33,6 +35,7 @@ def randomized_partition(arr: list, low: int, high: int) -> int:
 
 def quickselect(arr: list, low: int, high: int, k: int):
     """Find the one-based k-th smallest value in arr[low:high + 1]."""
+    # O(n) average, O(n^2) worst
     # Base case: a one-element slice contains the requested value.
     if low == high:
         return arr[low]
@@ -56,6 +59,7 @@ def quickselect(arr: list, low: int, high: int, k: int):
 
 def find_kth_smallest(nums: list, k: int):
     """Return the k-th smallest value without modifying the input list."""
+    # O(n) average, O(n^2) worst
     if not 1 <= k <= len(nums):
         raise ValueError(f"k 必须在 1 到 {len(nums)} 之间")
 

@@ -1,12 +1,14 @@
 # Created on iPad.
 arr = [711,170,343,7,452,617,144,417]
 def buck_sort(arr):
+    # O(1)
     res = 0
     return result
 
 
 
 def radix_sort(arr):
+    # O(d * (n + 10)), d = max digit count
     if not arr:
         return arr
 
@@ -27,6 +29,7 @@ def radix_sort(arr):
 
 
 def counting_sort_by_digit(arr, exp):
+    # O(n + 10)
     n = len(arr)
 
     # Store the result of this counting-sort pass.
@@ -60,6 +63,7 @@ def counting_sort_by_digit(arr, exp):
 
 
 def quick_select(arr,key,upper,lower):
+    # O(n)
     pivot = partition(arr,upper,lower)
     if pivot == key - 1:
         return arr[pivot]
@@ -72,6 +76,7 @@ def quick_select(arr,key,upper,lower):
 
 
 def partition(arr, upper, lower):
+    # O(n)
     current = arr[lower:upper + 1]
 
     # Choose a pivot that guarantees a sufficiently balanced split.
@@ -95,6 +100,7 @@ def partition(arr, upper, lower):
     return i + 1
 
 def median_of_medians(arr):
+    # O(n)
     # Base case: sort groups of at most five and return their median.
     if len(arr) <= 5:
         sorted_arr = sorted(arr)

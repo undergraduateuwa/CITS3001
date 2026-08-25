@@ -3,6 +3,7 @@
 arr = [2,5,7,1,4,10,3,2,5]
 
 def quicksort(arr,low,high):
+    # O(n log n) average, O(n^2) worst
     if high > low:
         p = partition(arr, low, high)
         quicksort(arr, low, p-1)
@@ -11,6 +12,7 @@ def quicksort(arr,low,high):
 
 
 def partition(arr,low,high):
+    # O(n)
     i = low -1
     pivot = arr[high]
 
@@ -23,6 +25,7 @@ def partition(arr,low,high):
     return i+1
 
 def quicksort2(arr, low, high):
+    # O(n log n) average, O(n^2) worst
     if low < high:
         i, j = partition2(arr, low, high)
 
@@ -31,6 +34,7 @@ def quicksort2(arr, low, high):
 
 
 def partition2(arr, low, high):
+    # O(n)
     i = low
     j = high
     pivot = arr[(low + high) // 2]
@@ -51,6 +55,7 @@ def partition2(arr, low, high):
     return i, j
 
 def bucket_sort(arr):
+    # O(n) uniform, O(n log n) worst
     if len(arr) <= 1:
         return arr
 
@@ -85,6 +90,7 @@ def bucket_sort(arr):
     return result
 
 def distribution_sort(xs, key_function):
+    # O(n + (max_key - min_key))
     if not xs:
         return []
 

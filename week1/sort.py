@@ -1,3 +1,4 @@
+# O(n log n)
 def merge_sort(arr):
     if len(arr)>1:
         mid = len(arr)//2
@@ -9,6 +10,7 @@ def merge_sort(arr):
     else:
         return arr
 
+# O(n)
 def merge(right,left):
     res = []
     i = 0
@@ -26,7 +28,7 @@ def merge(right,left):
     return res
 
 
-
+# O(n log n)
 def bucket_sort(arr):
     if not arr:
         return arr
@@ -56,35 +58,45 @@ def bucket_sort(arr):
 
     return sorted_arr
 
+# O(n)
 def counting_sort_by_digit(arr, exp):
     n = len(arr)
-    digits_records = [0 for _ in range(n)]
+    digits_records = [0 for _ in range(10)]
+    output = [0] * n
 
+    # Count the frequency of each digit.
     for num in arr:
-        digit = num // exp
+        digit = num // exp % 10
         digits_records[digit] += 1
 
+    # Cumulative counts give the final position of each digit.
+    for i in range(1, 10):
+        digits_records[i] += digits_records[i - 1]
+
+    # Place elements (from the end to keep the sort stable).
+    for num in reversed(arr):
+        digit = num // exp % 10
+        digits_records[digit] -= 1
+        output[digits_records[digit]] = num
+
+    return output
 
 
-
-    return arr
-
-
-
+# O(n log max)
 def radix_sort(arr):
     if not arr:
         return arr
     max_num = max(arr)
     exp = 1
 
-    while max_num/exp > 0:
-        counting_sort_by_digit(arr,exp)
+    while max_num // exp > 0:
+        arr = counting_sort_by_digit(arr, exp)
         exp *= 10
 
     return arr
 
 
-
+# O(n + range_size)
 def counting_sort(arr):
     if not arr:
         return []

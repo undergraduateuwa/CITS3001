@@ -1,0 +1,12 @@
+{
+  "tools": {
+    "disabled": [
+      "agent",
+      "update_goal",
+      "get_goal",
+      "artifact",
+      "list_agents"
+    ]
+  },
+  "$version": 4
+}
