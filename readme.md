@@ -14,6 +14,12 @@ The code is intended to practise algorithmic thinking, complexity analysis, and 
 |   +-- leaderBoard.py      # Dynamic k-th fastest time tracking
 |   +-- rainBucket.py       # Bucket counting
 |   +-- waterStation.py     # Weighted median and minimum distance
++-- lab02/                  # Lab 02: greedy, graph BFS, and dynamic programming
+|   +-- labBooking.py       # Activity selection / interval scheduling
+|   +-- mazeHops.py         # Grid BFS shortest path
+|   +-- oneWayTravel.py     # 0-1 BFS shortest paths on directed graphs
+|   +-- optimalEnrollment.py# 0/1 Knapsack dynamic programming
+|   +-- similarityScore.py  # Longest common subsequence (LCS)
 +-- week1/
 |   +-- Week1_1.py          # Basic exercises
 |   +-- sort.py             # Merge, bucket, counting, and radix sort
@@ -25,7 +31,8 @@ The code is intended to practise algorithmic thinking, complexity analysis, and 
 +-- week4/
 |   +-- Lecture2.py         # BFS, DFS, timing, and Kosaraju's algorithm
 +-- week5/
-|   +-- lecture1.py         # Bottom-up and top-down coin-change exercises
+|   +-- lecture1.py         # Bottom-up and top-down coin-change dynamic programming
+|   +-- lecture2.py         # Topological sorting (Kahn and DFS) and longest DAG path
 +-- leetcode_hot150.py      # Ongoing LeetCode Hot 150 solutions
 ```
 
@@ -33,7 +40,7 @@ The code is intended to practise algorithmic thinking, complexity analysis, and 
 
 - Comparison and linear sorting: merge sort, quicksort, bucket sort, counting sort, and radix sort
 - Order statistics: Quickselect, randomized partitioning, and Median of Medians
-- Graph algorithms: breadth-first search (BFS), depth-first search (DFS), and Kosaraju's algorithm for strongly connected components
+- Graph algorithms: breadth-first search (BFS), depth-first search (DFS), Kosaraju's algorithm for strongly connected components, and topological sorting of DAGs
 - Common LeetCode techniques: two pointers, sliding windows, hash tables, greedy algorithms, dynamic programming, matrix traversal, and interval processing
 - Competitive-programming techniques: heaps, weighted medians, standard input/output, and efficient data processing
 
@@ -63,6 +70,13 @@ python lab01/classRank.py < input.txt
 python lab01/leaderBoard.py < input.txt
 python lab01/rainBucket.py < input.txt
 python lab01/waterStation.py < input.txt
+```
+
+The lecture scripts print sample results when run directly:
+
+```bash
+python week5/lecture1.py
+python week5/lecture2.py
 ```
 
 Sorting, searching, and LeetCode functions can also be imported and tested directly:
